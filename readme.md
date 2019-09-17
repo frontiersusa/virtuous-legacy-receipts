@@ -12,8 +12,8 @@
 
 ## Install
 
-1. Clone project by running `git clone git@github.com:frontiersusa/virtuous-legacy-receipts.git` or just download zip
-2. In new directory run `npm intall`
+1. Clone project by running `git clone git@github.com:frontiersusa/virtuous-legacy-receipts.git` or just download the .zip.
+2. In new directory run `npm intall`.
 
 ## How to use
 
@@ -32,7 +32,7 @@ In all receipts (except for general-v1), there is a section that notates what wi
 
 ```
 <!-- Start of exportable code below -->
-  ... the receipt template in between
+  ... the receipt template in between ...
 <!-- End of exportable code -->
 ```
 
