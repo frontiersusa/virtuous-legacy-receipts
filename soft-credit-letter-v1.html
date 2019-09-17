@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>[Soft Credit Letter] Preview</title>
+		<link href="https://cdn.virtuoussoftware.com/css/receipts-1.0.1.min.css" rel="stylesheet">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+	</head>
+
+	<header>
+		<style>
+			@media print {
+				nav { display: none; }
+				.mustache { display: none;}
+			}
+		</style>
+		<script type="text/javascript">
+			new Clipboard('.copy-button', {
+				text: function() {
+					var htmlBlock = document.querySelector('main');
+					return htmlBlock.innerHTML.replace(/<\!--.*?-->/g, "");
+				}
+			});
+		</script>
+		<nav style="max-width: 8.5in; padding: 0 10px; margin: 75px auto 75px auto;">
+			<h1 style="display: inline-block; margin-top: 0;">Soft Credit Letter v1.0</h1>
+			<a style="display: inline-block; float: right; padding: 10px 12px 10px 12px; background-color: SpringGreen; color: black;" href="javascript:void(0)" class="copy-button" data-clipboard-action="copy" data-clipboard-target="main">Copy Code</a>
+			<a style="display: inline-block; float: right; padding: 10px 12px 10px 12px; background-color: blue; color: white; margin-right: 10px;" href="javascript:void(0)" onClick="window.print();">Print Preview</a>
+		</nav>
+	</header>
+
+	<body class="receipt-body">
+
+		<main> <!-- Start of exportable code below -->
+
+			<style>
+				@media all {
+
+					/* Base */
+					body, html {
+						font-family: helvetica, arial, sans-serif;
+						font-size: 12pt;
+						color: #000;
+					}
+					main {
+						box-sizing: border-box;
+						height: 100% !important;
+						background-color: transparent!important;
+					}
+					.data-real { display: none; }
+					.receipt-wrapper { line-height: initial !important; }
+					.receipt-wrapper .data-test { display: none; }
+					.receipt-wrapper .data-real { display: inline-block; }
+					.page {
+						position: relative;
+			      padding: 0!important;
+			      width: 8.5in!important;
+			      height: 11in!important;
+						page-break-after: always;
+						list-style: none;
+						overflow: hidden;
+					}
+					.position-reset {
+						position: absolute;
+						top: 0;
+						left: 0;
+					}
+					.inner-page { margin: 250px 75px 75px 75px; }
+					.error { color: red; }
+					ul {
+            margin-top: 0;
+            margin-bottom: 0;
+					}
+					.address ul {
+						list-style: none;
+						padding-left: 0;
+					}
+					.body ul {
+						margin: 25px 0;
+						padding-left: 40px;
+					}
+					.body li { margin-bottom: 5px; }
+					.date {
+						margin-bottom: 20px;
+					}
+					.address {
+						margin-bottom: 40px;
+					}
+
+				}
+				@media screen {
+					body { background-color: whitesmoke; }
+					.mustache { display: none; }
+					.page {
+						box-shadow: 0 3px 24px 0 rgba(0,0,0,.1);
+						margin: 0 auto 50px auto;
+						background-color: white;
+					}
+				}
+				@media print {
+					@page {
+						size: letter portrait;
+						padding: 0!important;
+						margin: 25mm 25mm 25mm 25mm;
+						box-sizing: border-box;
+					}
+					html {
+						margin: 0in;
+						padding: 0in;
+						height: 100%;
+						box-sizing: border-box;
+					}
+					body {
+						padding: 0!important;
+						margin: 0!important;
+						height: 100%;
+						box-sizing: border-box;
+					}
+					.page { margin: 0!important; }
+					.page-back span { display: none; }
+				}
+			</style>
+
+			<span class="mustache">{{#each Receipts}}</span> <!-- Start of receipt loop below -->
+
+			<div class="page page-front">
+				<div class="inner-page">
+
+					<div class="date">
+						<div class="data-real">
+							{{#if Gift.GiftDate}}
+								{{Gift.GiftDate}}
+							{{else}}
+								<span class="error">Unable to get gift date</span>
+							{{/if}}
+						</div>
+						<div class="data-test">
+							March 15, 2018
+						</div>
+					</div>
+
+					<div class="address">
+						<div class="data-real">
+							<ul>
+								<li>
+									{{#if Contact.ContactName}}
+										{{Contact.ContactName}}
+									{{else}}
+										<span class="error">Unable to get contact name</span>
+									{{/if}}
+								</li>
+								<li>
+									{{#if Contact.Address.AddressLine1}}
+										{{Contact.Address.AddressLine1}}
+									{{else}}
+										<span class="error">Unable to get contact address line 1</span>
+									{{/if}}
+								</li>
+								{{#if Contact.Address.AddressLine2}}
+									<li>
+										{{Contact.Address.AddressLine2}}
+									</li>
+								{{/if}}
+								<li>
+									{{#if Contact.Address.City}}
+										{{Contact.Address.City}},
+									{{/if}}
+									{{#if Contact.Address.State}}
+										{{Contact.Address.State}}
+									{{/if}}
+									{{#if Contact.Address.Postal}}
+										{{Contact.Address.Postal}}
+									{{/if}}
+								</li>
+							</ul>
+
+						</div>
+						<div class="data-test">
+							<ul>
+								<li>ACME Organization</li>
+								<li>Brian MacKay</li>
+								<li>74 W. Lynwood St.</li>
+								<li>6F</li>
+								<li>Phoenix, AZ 85003-1205</li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="greetings">
+						<div class="data-real">
+							<p>
+								{{#if Contact.ContactName}}
+									Dear {{Contact.ContactName}},
+								{{else}}
+									<span class="error">Unable to get contact name(s)</span>
+								{{/if}}
+							</p>
+
+						</div>
+						<div class="data-test">
+							<p>
+								Dear Mike and Judy,
+							</p>
+						</div>
+					</div>
+
+					<div class="body">
+						<div class="data-real">
+							<p>Thank you for your gift to Frontiers! You are making an eternal investment by partnering with us to reach more Muslims with the hope of Jesus Christ.</p>
+							<p>This letter acknowledges the following gift(s):</p>
+							<p>
+								<ul>
+									{{#each Gift.GiftDesignations}}
+	                  <li>
+											{{#if Project.Name}}
+                        {{Project.Name}} -
+                      {{else}}
+                        <span class="error">Unable to get project name</span>
+                      {{/if}}
+                      {{#if AmountDesignated}}
+                        {{AmountDesignated}}
+                      {{else}}
+                        <span class="error">Unable to get amount designated</span>
+                      {{/if}}
+	                  </li>
+	                {{/each}}
+								</ul>
+							</p>
+							<p>We are grateful for your kindness and generosity!</p>
+							<p>Sincerely,</p>
+							<p>Kathy Smoyer</p>
+							<p>Parner Impact Representative</p>
+						</div>
+						<div class="data-test">
+							<p>Thank you for your gift to Frontiers! You are making an eternal investment by partnering with us to reach more Muslims with the hope of Jesus Christ.</p>
+							<p>This letter acknowledges the following gift(s):</p>
+							<p>
+								<ul>
+									<li>Description of non-charitable gift: $200 through Fidelity</li>
+									<li>Designation of gift: Scott & Michal Sullivan (8880)</li>
+								</ul>
+							</p>
+							<p>We are grateful for your kindness and generosity!</p>
+							<p>Sincerely,</p>
+							<p>Kathy Smoyer</p>
+							<p>Parner Impact Representative</p>
+						</div>
+					</div>
+
+					<div class="footer">
+						<div class="data-real">
+
+						</div>
+						<div class="data-test">
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<span class="mustache">{{/each}}</span> <!-- End of receipt loop -->
+		</main> <!-- End of exportable code -->
+
+	</body>
+</html>

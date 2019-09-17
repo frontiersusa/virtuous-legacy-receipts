@@ -1,0 +1,21 @@
+{
+  "name": "frontiers-receipts",
+  "version": "0.0.1",
+  "description": "",
+  "private": true,
+  "author": "@natedunn",
+  "license": "ISC",
+  "scripts": {
+    "serve": "browser-sync start --server --files './**/*.html' --port '3000' --cors",
+    "reload": "browser-sync reload --port '3000'",
+    "watch": "onchange './**/*.*' -- npm run reload"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.18.8",
+    "del-cli": "^0.2.0",
+    "jshint": "^2.9.4",
+    "minifier": "^0.8.1",
+    "onchange": "^2.5.0"
+  },
+  "main": "index.js"
+}

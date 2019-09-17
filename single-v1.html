@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Receipt Preview</title>
+		<link href="https://cdn.virtuoussoftware.com/css/receipts-1.0.0.css" rel="stylesheet" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+	</head>
+
+	<body class="receipt-body">
+
+		<header>
+			<style>
+				@media print {
+					nav { display: none; }
+					.mustache { display: none;}
+				}
+			</style>
+			<script type="text/javascript">
+				new Clipboard('.copy-button', {
+					text: function() {
+						var htmlBlock = document.querySelector('main');
+						return htmlBlock.innerHTML.replace(/<\!--.*?-->/g, "");
+					}
+				});
+			</script>
+			<nav style="max-width: 8.5in; padding: 0 10px; margin: 75px auto 75px auto;">
+				<h1 style="display: inline-block; margin-top: 0;">General Receipt</h1>
+				<a style="display: inline-block; float: right; padding: 10px 12px 10px 12px; background-color: SpringGreen; color: black;" href="javascript:void(0)" class="copy-button" data-clipboard-action="copy" data-clipboard-target="main">Copy Code</a>
+				<a style="display: inline-block; float: right; padding: 10px 12px 10px 12px; background-color: blue; color: white; margin-right: 10px;" href="javascript:void(0)" onClick="window.print();">Print Preview</a>
+			</nav>
+		</header>
+
+		<main>
+			<style>
+				@media all {
+
+					/* Development */
+					.data-real {
+						/* display: inline-block; */
+						display: none;
+					}
+					.data-test {
+						display: inline-block;
+						/* display: none; */
+					}
+
+					/* Base */
+					body, html {
+						font-family: helvetica, arial, sans-serif;
+						font-size: 12pt;
+						color: #000;
+					}
+					main {
+						box-sizing: border-box;
+						height: 100% !important;
+						background-color: transparent!important;
+					}
+					.page {
+						position: relative;
+			      padding: 0!important;
+			      width: 8.5in!important;
+			      height: 11in!important;
+						page-break-after: always;
+						list-style: none;
+						overflow: hidden;
+					}
+					.position-reset {
+						position: absolute;
+						top: 0;
+						left: 0;
+						background-color: #ffc0cb4f;
+					}
+
+					/* Header */
+					.thank-you {
+					  left: 56px;
+					  top: 129px;
+					  font-size: 25px;
+					  letter-spacing: 0.125px;
+						font-weight: bold;
+					}
+
+					/* Body */
+					.address {
+						left: 61px;
+					  top: 245px;
+					  font-size: 11px;
+						width: 100%;
+  					max-width: 586px;
+					}
+					.designation {
+						left: 56px;
+					  top: 456px;
+					  font-weight: 900;
+						width: 100%;
+					  max-width: 274px;
+					  line-height: 1.44;
+					  font-size: 17px;
+					}
+					.date {
+						top: 458px;
+						left: 361px;
+						width: 100%;
+						max-width: 184px;
+					}
+					.donor-id {
+						top: 458px;
+						left: 576px;
+						width: 100%;
+						max-width: 184px;
+					}
+					.amount {
+						left: 56px;
+					  top: 567px;
+					  font-weight: 900;
+						width: 100%;
+					  max-width: 274px;
+					  line-height: 1.44;
+					  font-size: 17px;
+					}
+					.receipt-number {
+						top: 569px;
+						left: 361px;
+						width: 100%;
+						max-width: 184px;
+					}
+					.ytd {
+						top: 569px;
+						left: 576px;
+						width: 100%;
+						max-width: 184px;
+					}
+
+					/* Perf */
+					.perf-designation {
+						top: 825px;
+					  left: 56px;
+					  font-size: 12px;
+						width: 100%;
+  					max-width: 586px;
+					}
+					.perf-mission {
+						top: 856px;
+						left: 56px;
+						font-size: 12px;
+						width: 100%;
+  					max-width: 586px;
+					}
+					.perf-other {
+						top: 887px;
+						left: 56px;
+						font-size: 12px;
+						width: 100%;
+  					max-width: 586px;
+					}
+					.perf-id {
+						top: 998px;
+  					left: 299px;
+						width: 100%;
+						max-width: 95px;
+					}
+					.perf-name {
+						top: 998px;
+  					left: 418px;
+						width: 100%;
+  					max-width: 169px;
+					}
+				}
+				@media screen {
+					body { background-color: whitesmoke; }
+					.mustache { display: none; }
+					.page {
+						box-shadow: 0 3px 24px 0 rgba(0,0,0,.1);
+						margin: 0 auto 50px auto;
+						background-color: white;
+					}
+					.page-front {
+						background-image: url('receipt-bg.jpg');
+						background-size: 100%;
+
+					}
+				}
+				@media print {
+					@page {
+						size: letter portrait;
+						padding: 0!important;
+						margin: 25mm 25mm 25mm 25mm;
+						box-sizing: border-box;
+					}
+					html {
+						margin: 0in;
+						padding: 0in;
+						height: 100%;
+						box-sizing: border-box;
+					}
+					body {
+						padding: 0!important;
+						margin: 0!important;
+						height: 100%;
+						box-sizing: border-box;
+					}
+					.page {
+						margin: 0!important;
+					}
+
+				}
+			</style>
+			<style>
+				.pewter {
+					color: rgba(144, 176, 166, 1)
+				}
+				.page-front {
+
+				}
+				.page-back {
+
+				}
+				.inner-page {
+					margin: 75px;
+				}
+				.inner-page-front {
+
+				}
+				.error { color: red; }
+			</style>
+			<span class="mustache">{{#each Receipts}}</span>
+
+			<!-- Front Side -->
+			<div class="page page-front">
+				<div class="inner-page inner-page-front">
+
+					<!-- Header -->
+					<div class="thank-you position-reset">
+						<div class="data-real">
+							{{#if Contact.PrimaryIndividual}}
+								{{#if Contact.SecondaryIndividual}}
+									{{#with Contact.PrimaryIndividual}}
+										{{FirstName}} &amp;
+									{{/with}}
+									{{#with Contact.SecondaryIndividual}}
+										{{FirstName}},
+									{{/with}}
+								{{else}}
+									{{#with Contact.PrimaryIndividual}}
+										{{FirstName}} {{LastName}},
+									{{/with}}
+								{{/if}}
+							{{else}}
+								<span class="error">Unable to get contact name(s)</span>
+							{{/if}} thank you for your donation.
+						</div>
+
+
+						<div class="data-test">
+							Ray & Finn, thank you for your donation
+						</div>
+					</div>
+
+					<!-- Body -->
+					<div class="address position-reset">
+						<div class="data-real">
+							{{#if Contact.PrimaryIndividual}}
+								<b>{{#with Contact.PrimaryIndividual}}{{FirstName}} {{LastName}}{{/with}}</b>
+							{{else}}
+								<span class="error">Unable to get contact name</span>
+							{{/if}}
+							</br>
+							{{#if Contact.Address.AddressLine1}}{{Contact.Address.AddressLine1}}{{/if}} {{#if Contact.Address.AddressLine2}}{{Contact.Address.AddressLine2}}{{/if}}
+							</br>
+							{{#if Contact.Address.City}}{{Contact.Address.City}}{{/if}}, {{#if Contact.Address.State}}{{Contact.Address.State}} {{/if}}{{#if Contact.Address.Postal}}{{Contact.Address.Postal}}{{/if}}
+						</div>
+						<div class="data-test">
+							<b>Brian MacKay</b>
+							</br>
+							74 W. Lynwood St. 6F
+							</br>
+							Phoenix, AZ 85003-1205
+						</div>
+					</div>
+
+					<div class="designation position-reset">
+						<div class="data-real">
+							{{#if Gift.GiftDesignation}}
+								{{Gift.GiftDesignation}}
+							{{else}}
+								<span class="error">Unable to get gift designation</span>
+							{{/if}}
+						</div>
+						<div class="data-test">
+							Anakin and Padme Skywalker (005146)
+						</div>
+					</div>
+
+					<div class="date position-reset">
+						<div class="data-real">
+							{{#if Gift.GiftDate}}
+								{{Gift.GiftDate}}
+							{{else}}
+								<span class="error">Unable to get gift date</span>
+							{{/if}}
+						</div>
+						<div class="data-test">
+							03/19/17
+						</div>
+					</div>
+
+					<div class="donor-id position-reset">
+						<div class="data-real">
+							{{#if Contact.ContactId}}
+								{{Contact.ContactId}}
+							{{else}}
+								<span class="error">Unable to get contact ID</span>
+							{{/if}}
+						</div>
+						<div class="data-test">
+							26114
+						</div>
+					</div>
+
+					<div class="amount position-reset">
+						<div class="data-real">
+							{{#if Gift.GiftAmount}}
+								{{Gift.GiftAmount}}
+							{{else}}
+								<span class="error">Unable to get gift amount</span>
+							{{/if}}
+						</div>
+						<div class="test">
+							$30.78
+						</div>
+					</div>
+
+					<div class="receipt-number position-reset">
+						<div class="data-real">
+							{{#if Gift.GiftId}}
+								{{Gift.GiftId}}
+							{{else}}
+								<span class="error">Unable to get gift ID</span>
+							{{/if}}
+						</div>
+						<div class="test">
+							12124
+						</div>
+					</div>
+
+					<div class="ytd position-reset">
+						<div class="data-real">
+							{{#if Contact.YearToDateGiving}}
+								{{Contact.YearToDateGiving}}
+							{{else}}
+								<span class="error">Unable to get contact year-to-date</span>
+							{{/if}}
+						</div>
+						<div class="data-test">
+							$26,114
+						</div>
+					</div>
+
+					<!-- Perforated -->
+					<div class="perf-designation position-reset">
+						<div class="data-real">
+							Donate to the ministry of
+							{{#if Gift.GiftDesignation}}
+								{{Gift.GiftDesignation}}
+							{{else}}
+								<span class="error">Unable to get gift designation</span>
+							{{/if}}
+						</div>
+						<div class="data-test">
+							Donate to the ministry of Anakin and Padme Skywalker (005146)
+						</div>
+					</div>
+
+					<div class="perf-mission position-reset">
+						Donate to the Mission Fund (0001)
+					</div>
+
+					<div class="perf-other position-reset">
+						Donate to another designation (please write name or ID to the right)
+					</div>
+
+					<div class="perf-barcode position-reset">
+						Barcodes here.
+					</div>
+
+					<div class="perf-id position-reset">
+						<div class="data-real">
+							{{#if Contact.ContactId}}
+								{{Contact.ContactId}}
+							{{else}}
+								<span class="error">Unable to get contact ID</span>
+							{{/if}}
+						</div>
+						<div class="data-test">
+							26114
+						</div>
+					</div>
+
+					<div class="perf-name position-reset">
+						<div class="data-real">
+							{{#if Contact.PrimaryIndividual}}
+								{{#with Contact.PrimaryIndividual}}
+									{{FirstName}} {{LastName}},
+								{{/with}}
+							{{else}}
+								<span class="error">Unable to get primary contact.</span>
+							{{/if}} thank you for your donation.
+						</div>
+						<div class="data-test">
+							Ray Kenobi
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<!-- Back Side -->
+			<div class="page page-back">
+				<span>Back Side.</span>
+			</div>
+
+			<span class="mustache">{{/each}}</span>
+		</main>
+	</body>
+</html>

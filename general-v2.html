@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Receipt Preview</title>
+		<link href="https://cdn.virtuoussoftware.com/css/receipts-1.0.1.min.css" rel="stylesheet">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+	</head>
+
+	<header>
+		<style>
+			@media print {
+				nav { display: none; }
+				.mustache { display: none;}
+			}
+		</style>
+		<script type="text/javascript">
+			new Clipboard('.copy-button', {
+				text: function() {
+					var htmlBlock = document.querySelector('main');
+					return htmlBlock.innerHTML.replace(/<\!--.*?-->/g, "");
+				}
+			});
+		</script>
+		<nav style="max-width: 8.5in; padding: 0 10px; margin: 75px auto 75px auto;">
+			<h1 style="display: inline-block; margin-top: 0;">General Receipt v2</h1>
+			<a style="display: inline-block; float: right; padding: 10px 12px 10px 12px; background-color: SpringGreen; color: black;" href="javascript:void(0)" class="copy-button" data-clipboard-action="copy" data-clipboard-target="main">Copy Code</a>
+			<a style="display: inline-block; float: right; padding: 10px 12px 10px 12px; background-color: blue; color: white; margin-right: 10px;" href="javascript:void(0)" onClick="window.print();">Print Preview</a>
+		</nav>
+	</header>
+
+	<body class="receipt-body">
+
+		<main> <!-- Start of exportable code below -->
+
+			<style>
+				@media all {
+
+					/* Base */
+					body, html {
+						font-family: helvetica, arial, sans-serif;
+						font-size: 12pt;
+						color: #000;
+					}
+          ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 0;
+            margin-bottom: 0;
+          }
+					main {
+						box-sizing: border-box;
+						height: 100% !important;
+						background-color: transparent!important;
+					}
+					.data-real { display: none; }
+					.receipt-wrapper { line-height: initial !important; }
+					.receipt-wrapper .data-test { display: none; }
+					.receipt-wrapper .data-real { display: inline-block; }
+					.page {
+						position: relative;
+			      padding: 0!important;
+			      width: 8.5in!important;
+			      height: 11in!important;
+						page-break-after: always;
+						list-style: none;
+						overflow: hidden;
+					}
+					.position-reset {
+						position: absolute;
+						top: 0;
+						left: 0;
+						/* background-color: #ffc0cb4f; */
+					}
+					.pewter { color: rgba(144, 176, 166, 1); }
+					.inner-page { margin: 75px; }
+					.error { color: red; }
+
+					/* Thanks / Address */
+					.thank-you {
+					  left: 59px;
+					  top: 130px;
+					  font-size: 19px;
+					  letter-spacing: 0.125px;
+						font-weight: bold;
+						max-width: 705px;
+					}
+					.address {
+            left: 122px;
+          	top: 233px;
+            font-size: 11px;
+            width: 100%;
+            max-width: 500px;
+					}
+					.address li { margin-bottom: 2px; }
+
+					/* Body */
+					.date {
+            top: 412px;
+            left: 59px;
+            width: 100%;
+            max-width: 155px;
+            font-size: 13px;
+					}
+					.donor-id {
+            top: 412px;
+            left: 243px;
+            width: 100%;
+            max-width: 155px;
+            font-size: 13px;
+					}
+          .gift-id {
+            top: 412px;
+            left: 424px;
+            width: 100%;
+            max-width: 155px;
+            font-size: 13px;
+					}
+          .ytd {
+            top: 412px;
+            left: 608px;
+            width: 100%;
+            max-width: 155px;
+            font-size: 13px;
+          }
+          .designations {
+            top: 485px;
+            left: 59px;
+            width: 100%;
+            max-width: 703px;
+            font-size: 13px;
+            font-weight: bold;
+          }
+          .designations > div,
+          .designations > div > ul,
+          .designations > div > ul > li { width: 100%; }
+          .designations li {
+            display: inline-block;
+            margin-bottom: 9px;
+          }
+          .designations-name { float: left; }
+          .designations-amount { float: right; }
+					.amount {
+            left: auto;
+            right: 50px;
+            top: 632px;
+            font-weight: bold;
+            width: 100%;
+            max-width: 100px;
+            line-height: 1.44;
+            font-size: 17px;
+            text-align: right;
+					}
+
+					/* Perf */
+          .perf-designations {
+            top: 776px;
+            left: 59px;
+            width: 100%;
+            max-width: 537px;
+            font-size: 12px;
+          }
+					.perf-designations-amount,
+					.perf-designations-custom { display: inline-block; }
+					.perf-designations-amount { margin-right: 10px; }
+          .perf-designations > div,
+          .perf-designations > div > ul,
+          .perf-designations > div > ul > li { width: 100%; }
+          .perf-designations li {
+            display: inline-block;
+            margin-bottom: 9px;
+          }
+          .perf-designations-name { float: left; }
+					.perf-barcodes {
+					  top: 769px;
+					  left: auto;
+					  right: 40px;
+					}
+					.perf-barcodes > div > ul > li {
+						position: relative;
+						padding-bottom: 5px;
+					}
+					.perf-designations-right { float: right; }
+					.perf-designations svg {
+						height: 15px;
+					  width: 15px;
+					  vertical-align: top;
+					  margin-top: -1px;
+					}
+					/* .perf-barcode-amount,
+					.perf-barcode-designation { position: relative; }
+					.perf-barcode-amount > img {
+						position: absolute;
+					  clip: rect(10px,155px,20px,10px);
+					  margin-top: -3px;
+					}
+					.perf-barcode-designation > img {
+						position: absolute;
+					  clip: rect(10px,155px,20px,10px);
+					  margin-top: -20px;
+					} */
+					.perf-donor-id {
+						top: auto;
+					  bottom: 71px;
+					  left: 137px;
+					  font-size: 11px;
+					}
+					.perf-donor-barcode {
+						top: auto;
+						bottom: 69px;
+						left: 189px;
+					}
+					.perf-donor-barcode img {
+						/* position: absolute;
+					  clip: rect(10px,155px,20px,10px);
+					  margin-top: -3px; */
+					}
+					.perf-amount-barcode {
+						top: auto;
+					  bottom: 63px;
+					  left: auto;
+					  right: 45px;
+					}
+				}
+				@media screen {
+					body { background-color: whitesmoke; }
+					.mustache { display: none; }
+					.page {
+						box-shadow: 0 3px 24px 0 rgba(0,0,0,.1);
+						margin: 0 auto 50px auto;
+						background-color: white;
+					}
+					.page-front {
+						background-image: url('images/general-v2-bg.png');
+						background-size: 100%;
+					}
+				}
+				@media print {
+					@page {
+						size: letter portrait;
+						padding: 0!important;
+						margin: 25mm 25mm 25mm 25mm;
+						box-sizing: border-box;
+					}
+					html {
+						margin: 0in;
+						padding: 0in;
+						height: 100%;
+						box-sizing: border-box;
+					}
+					body {
+						padding: 0!important;
+						margin: 0!important;
+						height: 100%;
+						box-sizing: border-box;
+					}
+					.page { margin: 0!important; }
+					.page-back span { display: none; }
+				}
+			</style>
+
+			<span class="mustache">{{#each Receipts}}</span> <!-- Start of receipt loop below -->
+
+			<div class="page page-front">
+				<div class="inner-page inner-page-front">
+
+					<!-- Thanks / Address -->
+					<div class="thank-you position-reset">
+						<div class="data-real">
+							{{#if Contact.ContactName}}
+								{{Contact.ContactName}},
+							{{else}}
+								<span class="error">Unable to get contact name(s)</span>
+							{{/if}} thank you for your gift.
+						</div>
+						<div class="data-test">
+							Rey and Finn, thank you for your gift
+						</div>
+					</div>
+
+          <div class="address position-reset">
+						<div class="data-real">
+							<ul>
+								<li>
+									{{#if Contact.ContactName}}
+										{{Contact.ContactName}}
+									{{else}}
+										<span class="error">Unable to get contact name</span>
+									{{/if}}
+								</li>
+								<li>
+									{{#if Contact.Address.AddressLine1}}
+										{{Contact.Address.AddressLine1}}
+									{{else}}
+										<span class="error">Unable to get contact address line 1</span>
+									{{/if}}
+								</li>
+								{{#if Contact.Address.AddressLine2}}
+									<li>
+										{{Contact.Address.AddressLine2}}
+									</li>
+								{{/if}}
+								<li>
+									{{#if Contact.Address.City}}
+										{{Contact.Address.City}},
+									{{/if}}
+									{{#if Contact.Address.State}}
+										{{Contact.Address.State}}
+									{{/if}}
+									{{#if Contact.Address.Postal}}
+										{{Contact.Address.Postal}}
+									{{/if}}
+								</li>
+							</ul>
+
+						</div>
+						<div class="data-test">
+							<ul>
+								<li>ACME Organization</li>
+								<li>Brian MacKay</li>
+								<li>74 W. Lynwood St.</li>
+								<li>6F</li>
+								<li>Phoenix, AZ 85003-1205</li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Body -->
+          <div class="date position-reset">
+						<div class="data-real">
+							{{#if Gift.GiftDate}}
+								{{Gift.GiftDate}}
+							{{else}}
+								<span class="error">Unable to get gift date</span>
+							{{/if}}
+						</div>
+						<div class="data-test">
+							03/19/17
+						</div>
+					</div>
+
+          <div class="donor-id position-reset">
+						<div class="data-real">
+							{{#if Contact.ContactId}}
+								{{Contact.ContactId}}
+							{{else}}
+								<span class="error">Unable to get contact ID</span>
+							{{/if}}
+						</div>
+						<div class="data-test">
+							26114
+						</div>
+					</div>
+
+          <div class="gift-id position-reset">
+						<div class="data-real">
+							{{#if Gift.GiftId}}
+								{{Gift.GiftId}}
+							{{else}}
+								<span class="error">Unable to get gift ID</span>
+							{{/if}}
+						</div>
+						<div class="data-test">
+							12124
+						</div>
+					</div>
+
+          <div class="ytd position-reset">
+						<div class="data-real">
+							{{#if Contact.YearToDateGiving}}
+								{{Contact.YearToDateGiving}}
+							{{else}}
+								<span class="error">Unable to get contact year-to-date</span>
+							{{/if}}
+						</div>
+						<div class="data-test">
+							$26,114
+						</div>
+					</div>
+
+          <div class="designations position-reset">
+            <div class="data-real">
+              <ul>
+                {{#each Gift.GiftDesignations}}
+                  <li>
+                    <div class="designations-name">
+                      {{#if Project.Name}}
+                        {{Project.Name}}
+                      {{else}}
+                        <span class="error">Unable to get project name</span>
+                      {{/if}}
+                    </div>
+                    <div class="designations-amount">
+                      {{#if AmountDesignated}}
+                        {{AmountDesignated}}
+                      {{else}}
+                        <span class="error">Unable to get amount designated</span>
+                      {{/if}}
+                    </div>
+                  </li>
+                {{/each}}
+              </ul>
+            </div>
+            <div class="data-test">
+              <ul>
+                <li>
+                  <div class="designations-name">
+                    Anakin and Padme Skywalker (005146)
+                  </div>
+                  <div class="designations-amount">
+                    $30.78
+                  </div>
+                </li>
+                <li>
+                  <div class="designations-name">
+                    Anakin and Padme Skywalker (005146)
+                  </div>
+                  <div class="designations-amount">
+                    $30.78
+                  </div>
+                </li>
+                <li>
+                  <div class="designations-name">
+                    Anakin and Padme Skywalker (005146)
+                  </div>
+                  <div class="designations-amount">
+                    $30.78
+                  </div>
+                </li>
+                <li>
+                  <div class="designations-name">
+                    Anakin and Padme Skywalker (005146)
+                  </div>
+                  <div class="designations-amount">
+                    $30.78
+                  </div>
+                </li>
+                <li>
+                  <div class="designations-name">
+                    Anakin and Padme Skywalker (005146)
+                  </div>
+                  <div class="designations-amount">
+                    $30.78
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+					<div class="amount position-reset">
+						<div class="data-real">
+							{{#if Gift.GiftAmount}}
+								{{Gift.GiftAmount}}
+							{{else}}
+								<span class="error">Unable to get gift amount</span>
+							{{/if}}
+						</div>
+						<div class="data-test">
+							$30.78
+						</div>
+					</div>
+
+					<!-- Perf -->
+          <div class="perf-designations position-reset">
+            <div class="data-real">
+              <ul>
+                {{#each Gift.GiftDesignations}}
+                  <li>
+                    <div class="perf-designations-name">
+                      {{#if Project.Name}}
+                        {{Project.Name}}
+                      {{else}}
+                        <span class="error">Unable to get project name</span>
+                      {{/if}}
+                    </div>
+										<div class="perf-designations-right">
+											<div class="perf-designations-amount">
+												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-6 400H54c-3.3 0-6-2.7-6-6V86c0-3.3 2.7-6 6-6h340c3.3 0 6 2.7 6 6v340c0 3.3-2.7 6-6 6z"/></svg>
+												{{#if AmountDesignated}}
+	                        {{AmountDesignated}}
+	                      {{else}}
+	                        <span class="error">Unable to get amount designated</span>
+	                      {{/if}}
+											</div>
+											<div class="perf-designations-custom">
+												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-6 400H54c-3.3 0-6-2.7-6-6V86c0-3.3 2.7-6 6-6h340c3.3 0 6 2.7 6 6v340c0 3.3-2.7 6-6 6z"/></svg> $_________
+											</div>
+										</div>
+                  </li>
+                {{/each}}
+								<li>
+									Another Designation (please write name or ID)_____________________________
+									<div class="perf-designations-right">
+										<div class="perf-designations-custom">
+											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-6 400H54c-3.3 0-6-2.7-6-6V86c0-3.3 2.7-6 6-6h340c3.3 0 6 2.7 6 6v340c0 3.3-2.7 6-6 6z"/></svg> $_________
+										</div>
+									</div>
+								</li>
+								<li>
+									The Mission Fund — Equips Frontiers to recruit, train, and send new teams (0001)
+									<div class="perf-designations-right">
+										<div class="perf-designations-custom">
+											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-6 400H54c-3.3 0-6-2.7-6-6V86c0-3.3 2.7-6 6-6h340c3.3 0 6 2.7 6 6v340c0 3.3-2.7 6-6 6z"/></svg> $_________
+										</div>
+									</div>
+								</li>
+              </ul>
+            </div>
+            <div class="data-test">
+              <ul>
+                <li>
+                  <div class="perf-designations-name">
+                    Anakin and Padme Skywalker (005146)
+                  </div>
+									<div class="perf-designations-right">
+										<div class="perf-designations-amount">
+											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-6 400H54c-3.3 0-6-2.7-6-6V86c0-3.3 2.7-6 6-6h340c3.3 0 6 2.7 6 6v340c0 3.3-2.7 6-6 6z"/></svg> $30.07
+										</div>
+										<div class="perf-designations-custom">
+											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-6 400H54c-3.3 0-6-2.7-6-6V86c0-3.3 2.7-6 6-6h340c3.3 0 6 2.7 6 6v340c0 3.3-2.7 6-6 6z"/></svg> $_________
+										</div>
+									</div>
+                </li>
+								<li>
+                  <div class="perf-designations-name">
+                    Anakin and Padme Skywalker (005146)
+                  </div>
+									<div class="perf-designations-right">
+										<div class="perf-designations-amount">
+											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-6 400H54c-3.3 0-6-2.7-6-6V86c0-3.3 2.7-6 6-6h340c3.3 0 6 2.7 6 6v340c0 3.3-2.7 6-6 6z"/></svg> $30.07
+										</div>
+										<div class="perf-designations-custom">
+											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-6 400H54c-3.3 0-6-2.7-6-6V86c0-3.3 2.7-6 6-6h340c3.3 0 6 2.7 6 6v340c0 3.3-2.7 6-6 6z"/></svg> $_________
+										</div>
+									</div>
+                </li>
+								<li>
+                  <div class="perf-designations-name">
+                    Anakin and Padme Skywalker (005146)
+                  </div>
+									<div class="perf-designations-right">
+										<div class="perf-designations-amount">
+											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-6 400H54c-3.3 0-6-2.7-6-6V86c0-3.3 2.7-6 6-6h340c3.3 0 6 2.7 6 6v340c0 3.3-2.7 6-6 6z"/></svg> $30.07
+										</div>
+										<div class="perf-designations-custom">
+											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-6 400H54c-3.3 0-6-2.7-6-6V86c0-3.3 2.7-6 6-6h340c3.3 0 6 2.7 6 6v340c0 3.3-2.7 6-6 6z"/></svg> $_________
+										</div>
+									</div>
+                </li>
+								<li>
+                  <div class="perf-designations-name">
+                    Anakin and Padme Skywalker (005146)
+                  </div>
+									<div class="perf-designations-right">
+										<div class="perf-designations-amount">
+											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-6 400H54c-3.3 0-6-2.7-6-6V86c0-3.3 2.7-6 6-6h340c3.3 0 6 2.7 6 6v340c0 3.3-2.7 6-6 6z"/></svg> $30.07
+										</div>
+										<div class="perf-designations-custom">
+											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-6 400H54c-3.3 0-6-2.7-6-6V86c0-3.3 2.7-6 6-6h340c3.3 0 6 2.7 6 6v340c0 3.3-2.7 6-6 6z"/></svg> $_________
+										</div>
+									</div>
+                </li>
+								<li>
+                  <div class="perf-designations-name">
+                    Anakin and Padme Skywalker (005146)
+                  </div>
+									<div class="perf-designations-right">
+										<div class="perf-designations-amount">
+											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-6 400H54c-3.3 0-6-2.7-6-6V86c0-3.3 2.7-6 6-6h340c3.3 0 6 2.7 6 6v340c0 3.3-2.7 6-6 6z"/></svg> $30.07
+										</div>
+										<div class="perf-designations-custom">
+											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-6 400H54c-3.3 0-6-2.7-6-6V86c0-3.3 2.7-6 6-6h340c3.3 0 6 2.7 6 6v340c0 3.3-2.7 6-6 6z"/></svg> $_________
+										</div>
+									</div>
+                </li>
+								<li>
+									Another Designation (please write name or ID)_____________________________
+									<div class="perf-designations-right">
+										<div class="perf-designations-custom">
+											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-6 400H54c-3.3 0-6-2.7-6-6V86c0-3.3 2.7-6 6-6h340c3.3 0 6 2.7 6 6v340c0 3.3-2.7 6-6 6z"/></svg> $_________
+										</div>
+									</div>
+								</li>
+								<li>
+									The Mission Fund — Equips Frontiers to recruit, train, and send new teams (0001)
+									<div class="perf-designations-right">
+										<div class="perf-designations-custom">
+											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-6 400H54c-3.3 0-6-2.7-6-6V86c0-3.3 2.7-6 6-6h340c3.3 0 6 2.7 6 6v340c0 3.3-2.7 6-6 6z"/></svg> $_________
+										</div>
+									</div>
+								</li>
+              </ul>
+            </div>
+          </div>
+
+					<div class="perf-barcodes position-reset">
+						<div class="data-real">
+							<ul>
+								{{#each Gift.GiftDesignations}}
+									<li>
+										<div class="perf-barcode-amount">
+											<img src="http://www.keepautomation.com/online_barcode_generator/linear.aspx?TYPE=9&DATA={{AmountDesignated}}&PROCESS-TILDE=false&UOM=0&X=1&Y=10&ROTATE=0&RESOLUTION=300&FORMAT=jpg&LEFT-MARGIN=0&RIGHT-MARGIN=0&SHOW-TEXT=false&TEXT-FONT=Arial%7c9%7cRegular">
+										</div>
+										<div class="perf-barcode-designation">
+											<img src="http://www.keepautomation.com/online_barcode_generator/linear.aspx?TYPE=9&DATA={{Project.ProjectCode}}&PROCESS-TILDE=false&UOM=0&X=1&Y=10&ROTATE=0&RESOLUTION=300&FORMAT=jpg&LEFT-MARGIN=0&RIGHT-MARGIN=0&SHOW-TEXT=false&TEXT-FONT=Arial%7c9%7cRegular">
+										</div>
+									</li>
+								{{/each}}
+							</ul>
+						</div>
+						<div class="data-test">
+							<ul>
+								<li>
+									<div class="perf-barcode-amount">
+										<img src="http://www.keepautomation.com/online_barcode_generator/linear.aspx?TYPE=9&DATA=$2,000.00&PROCESS-TILDE=false&UOM=0&X=1&Y=10&ROTATE=0&RESOLUTION=300&FORMAT=jpg&LEFT-MARGIN=0&RIGHT-MARGIN=0&SHOW-TEXT=false&TEXT-FONT=Arial%7c9%7cRegular">
+									</div>
+									<div class="perf-barcode-designation">
+										<img src="http://www.keepautomation.com/online_barcode_generator/linear.aspx?TYPE=9&DATA=005146&PROCESS-TILDE=false&UOM=0&X=1&Y=10&ROTATE=0&RESOLUTION=300&FORMAT=jpg&LEFT-MARGIN=0&RIGHT-MARGIN=0&SHOW-TEXT=false&TEXT-FONT=Arial%7c9%7cRegular">
+									</div>
+								</li>
+								<li>
+									<div class="perf-barcode-amount">
+										<img src="http://www.keepautomation.com/online_barcode_generator/linear.aspx?TYPE=9&DATA=$2,000.00&PROCESS-TILDE=false&UOM=0&X=1&Y=10&ROTATE=0&RESOLUTION=300&FORMAT=jpg&LEFT-MARGIN=0&RIGHT-MARGIN=0&SHOW-TEXT=false&TEXT-FONT=Arial%7c9%7cRegular">
+									</div>
+									<div class="perf-barcode-designation">
+										<img src="http://www.keepautomation.com/online_barcode_generator/linear.aspx?TYPE=9&DATA=005146&PROCESS-TILDE=false&UOM=0&X=1&Y=10&ROTATE=0&RESOLUTION=300&FORMAT=jpg&LEFT-MARGIN=0&RIGHT-MARGIN=0&SHOW-TEXT=false&TEXT-FONT=Arial%7c9%7cRegular">
+									</div>
+								</li>
+								<li>
+									<div class="perf-barcode-amount">
+										<img src="http://www.keepautomation.com/online_barcode_generator/linear.aspx?TYPE=9&DATA=$2,000.00&PROCESS-TILDE=false&UOM=0&X=1&Y=10&ROTATE=0&RESOLUTION=300&FORMAT=jpg&LEFT-MARGIN=0&RIGHT-MARGIN=0&SHOW-TEXT=false&TEXT-FONT=Arial%7c9%7cRegular">
+									</div>
+									<div class="perf-barcode-designation">
+										<img src="http://www.keepautomation.com/online_barcode_generator/linear.aspx?TYPE=9&DATA=005146&PROCESS-TILDE=false&UOM=0&X=1&Y=10&ROTATE=0&RESOLUTION=300&FORMAT=jpg&LEFT-MARGIN=0&RIGHT-MARGIN=0&SHOW-TEXT=false&TEXT-FONT=Arial%7c9%7cRegular">
+									</div>
+								</li>
+								<li>
+									<div class="perf-barcode-amount">
+										<img src="http://www.keepautomation.com/online_barcode_generator/linear.aspx?TYPE=9&DATA=$2,000.00&PROCESS-TILDE=false&UOM=0&X=1&Y=10&ROTATE=0&RESOLUTION=300&FORMAT=jpg&LEFT-MARGIN=0&RIGHT-MARGIN=0&SHOW-TEXT=false&TEXT-FONT=Arial%7c9%7cRegular">
+									</div>
+									<div class="perf-barcode-designation">
+										<img src="http://www.keepautomation.com/online_barcode_generator/linear.aspx?TYPE=9&DATA=005146&PROCESS-TILDE=false&UOM=0&X=1&Y=10&ROTATE=0&RESOLUTION=300&FORMAT=jpg&LEFT-MARGIN=0&RIGHT-MARGIN=0&SHOW-TEXT=false&TEXT-FONT=Arial%7c9%7cRegular">
+									</div>
+								</li>
+								<li>
+									<div class="perf-barcode-amount">
+										<img src="http://www.keepautomation.com/online_barcode_generator/linear.aspx?TYPE=9&DATA=$2,000.00&PROCESS-TILDE=false&UOM=0&X=1&Y=10&ROTATE=0&RESOLUTION=300&FORMAT=jpg&LEFT-MARGIN=0&RIGHT-MARGIN=0&SHOW-TEXT=false&TEXT-FONT=Arial%7c9%7cRegular">
+									</div>
+									<div class="perf-barcode-designation">
+										<img src="http://www.keepautomation.com/online_barcode_generator/linear.aspx?TYPE=9&DATA=005146&PROCESS-TILDE=false&UOM=0&X=1&Y=10&ROTATE=0&RESOLUTION=300&FORMAT=jpg&LEFT-MARGIN=0&RIGHT-MARGIN=0&SHOW-TEXT=false&TEXT-FONT=Arial%7c9%7cRegular">
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="perf-donor-id position-reset">
+						<div class="data-real">
+							{{#if Contact.ContactId}}
+								{{Contact.ContactId}}
+							{{else}}
+								<span class="error">Unable to get contact ID</span>
+							{{/if}}
+						</div>
+						<div class="data-test">
+							26114
+						</div>
+					</div>
+
+					<div class="perf-donor-barcode position-reset">
+						<div class="data-real">
+							{{#if Contact.ContactId}}
+								<img src="http://www.keepautomation.com/online_barcode_generator/linear.aspx?TYPE=9&DATA={{Contact.ContactId}}&PROCESS-TILDE=false&UOM=0&X=1&Y=10&ROTATE=0&RESOLUTION=300&FORMAT=jpg&LEFT-MARGIN=0&RIGHT-MARGIN=0&SHOW-TEXT=false&TEXT-FONT=Arial%7c9%7cRegular">
+							{{else}}
+								<span class="error">Unable to get donor ID barcode</span>
+							{{/if}}
+						</div>
+						<div class="data-test">
+							<img src="http://www.keepautomation.com/online_barcode_generator/linear.aspx?TYPE=9&DATA=26114&PROCESS-TILDE=false&UOM=0&X=1&Y=10&ROTATE=0&RESOLUTION=300&FORMAT=jpg&LEFT-MARGIN=0&RIGHT-MARGIN=0&SHOW-TEXT=false&TEXT-FONT=Arial%7c9%7cRegular">
+						</div>
+					</div>
+
+					<div class="perf-amount-barcode position-reset">
+						<div class="data-real">
+							{{#if Gift.GiftAmount}}
+								<img src="http://www.keepautomation.com/online_barcode_generator/linear.aspx?TYPE=9&DATA={{Gift.GiftAmount}}&PROCESS-TILDE=false&UOM=0&X=1&Y=10&ROTATE=0&RESOLUTION=300&FORMAT=jpg&LEFT-MARGIN=0&RIGHT-MARGIN=0&SHOW-TEXT=false&TEXT-FONT=Arial%7c9%7cRegular">
+							{{else}}
+								<span class="error">Unable to get gift amount barcode</span>
+							{{/if}}
+						</div>
+						<div class="data-test">
+							<img src="http://www.keepautomation.com/online_barcode_generator/linear.aspx?TYPE=9&DATA=$2,358.21&PROCESS-TILDE=false&UOM=0&X=1&Y=10&ROTATE=0&RESOLUTION=300&FORMAT=jpg&LEFT-MARGIN=0&RIGHT-MARGIN=0&SHOW-TEXT=false&TEXT-FONT=Arial%7c9%7cRegular">
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<span class="mustache">{{/each}}</span> <!-- End of receipt loop -->
+		</main> <!-- End of exportable code -->
+
+	</body>
+</html>
