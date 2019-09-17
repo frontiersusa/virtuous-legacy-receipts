@@ -1,12 +1,20 @@
 <style media="all">
   /* Development */
-  .dev-outline { border: 1px dotted gray;  }
+  .dev-outline {
+    border: 1px dotted gray;
+  }
   /*.dev-shell { opacity: 0; }*/
 
   /* Common, resuable utilities  */
-  .dib { display: inline-block; }
-  .w100 { width: 100%; }
-  .b { font-weight: 900; }
+  .dib {
+    display: inline-block;
+  }
+  .w100 {
+    width: 100%;
+  }
+  .b {
+    font-weight: 900;
+  }
   .caps {
     text-transform: uppercase;
     letter-spacing: 0.75px;
@@ -15,27 +23,53 @@
     list-style: none;
     padding: 0;
   }
-  .line-thin { border-bottom: 2px solid #EBEBEB; }
+  .line-thin {
+    border-bottom: 2px solid #ebebeb;
+  }
 
-  .pewter { color: #95B7BB; }
-  .gray { color: #B7B7B7; }
-  .red { color: red; }
+  .pewter {
+    color: #95b7bb;
+  }
+  .gray {
+    color: #b7b7b7;
+  }
+  .red {
+    color: red;
+  }
 
-  [class*='col-'] { float: left; }
-  .grid [class*='col-']:last-of-type { padding-right: 0; }
-  .col-2-3 { width: 66.66%; }
-  .col-1-3 { width: 33.33%; }
-  .col-1-2 { width: 50%; }
-  .col-1-4 { width: 25%; }
-  .col-1-8 { width: 12.5%; }
+  [class*="col-"] {
+    float: left;
+  }
+  .grid [class*="col-"]:last-of-type {
+    padding-right: 0;
+  }
+  .col-2-3 {
+    width: 66.66%;
+  }
+  .col-1-3 {
+    width: 33.33%;
+  }
+  .col-1-2 {
+    width: 50%;
+  }
+  .col-1-4 {
+    width: 25%;
+  }
+  .col-1-8 {
+    width: 12.5%;
+  }
 
   /* Theme specific */
   body {
     font-family: sans-serif;
     margin: 0;
   }
-  .receipt-wrapper { padding: 0 !important; }
-  .column-content { padding-right: 30px; }
+  .receipt-wrapper {
+    padding: 0 !important;
+  }
+  .column-content {
+    padding-right: 30px;
+  }
   .page {
     position: relative;
     height: 11in;
@@ -44,61 +78,112 @@
     margin: 0;
     page-break-after: always;
   }
-  .page-back { color: #9A9A9A !important; } /* Keep back color consistent */
-
+  .page-back {
+    color: #9a9a9a !important;
+  } /* Keep back color consistent */
 </style>
 
 <ul class="list-reset">
-
   <!-- FRONT PAGE -->
   <li class="page dev-outline">
     <!-- RECEIPT HEADER -->
     <div>
-      <div class="dib" style="height: 30px; width: 50%;  vertical-align: top; margin-bottom: 7px;">
-        <svg style="width: 125px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 264 54" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="a" d="M0 0h263.446v53.582H0z"/></defs><g fill="none" fill-rule="evenodd"><mask id="b" fill="#fff"><use xlink:href="#a"/></mask><path fill="#90B1A7" d="M40.47 18.09c-5.426.706-19.473 3.16-24.804 12.736-1.646 3.13-.595 5.893-.47 6.107-3.292-5.034-6.96-13.228 8.09-21.726 5.06-2.857 11.097-4.482 14.735-5.095 2.01-.307 2.83-.122 3.39 1.84.57 1.963.75 2.63.94 3.44.18.755.58 2.378-1.88 2.7zm-6.016 8.25c-4.766 1.14-21.224 5.642-17 15.014-.98-1.257-3.45-5.964-1.182-10.028 2.466-4.415 7.026-7.304 11.737-9.144 1.36-.534 2.73-.977 4.06-1.35l.54-.137c1.42-.338 1.8-.202 2.27 1.192.42 1.248.61 1.858.75 2.402.13.54.55 1.63-1.19 2.05zm-10.06 8.796c-2.843 1.502-7.61 4.205-5.115 8.452-.93-1.018-1.98-2.784-1.91-5.156.04-1.47.65-2.775 1.84-4.03.91-.97 2.01-1.785 3.39-2.577.43-.22.96-.162 1.21.333.3.6.77 1.57.89 1.876.09.227.36.744-.33 1.102zM0 53.583h54.746V0H0v53.583z" mask="url(#b)"/><path fill="#90B1A7" d="M76.45 26.792h-4.635V22.12h4.634v-3.115c0-6.094 1.4-10.078 8.37-10.078 1.21 0 2.38.093 3.55.32L88 13.92c-.794-.19-1.543-.32-2.34-.32-3.134 0-3.603 2.1-3.603 4.53v3.982h5.197v4.672H82.06V44.1h-5.61V26.79zm13.292-4.674h5.616V25.6h.094c1.216-2.518 3.697-4.03 6.646-4.03.7 0 1.356.136 2.013.32v5.314c-.93-.228-1.82-.412-2.71-.412-5.29 0-6.04 4.352-6.04 5.544v11.77h-5.61V22.118zm27.295-.548c6.787 0 12.216 4.627 12.216 11.543 0 6.918-5.43 11.542-12.216 11.542-6.785 0-12.215-4.624-12.215-11.542 0-6.916 5.43-11.543 12.215-11.543m0 18.138c4.12 0 6.6-3.16 6.6-6.595 0-3.437-2.48-6.596-6.6-6.596-4.118 0-6.598 3.16-6.598 6.596 0 3.435 2.48 6.595 6.59 6.595m16.29-17.59h5.33v3.527h.09c1.03-2.197 3.13-4.076 6.88-4.076 6.03 0 8.19 4.16 8.19 8.65V44.1h-5.61V32.97c0-2.426-.19-6.46-4.12-6.46-3.7 0-5.15 2.658-5.15 5.59v12h-5.62V22.12zm23.07 4.674V22.12h4.63v-6.367h5.61v6.366h6.18v4.67h-6.18v9.62c0 2.2.65 3.57 3.13 3.57.98 0 2.34-.18 3.04-.69v4.62c-1.17.55-3.14.73-4.45.73-5.94 0-7.348-2.61-7.348-7.79V26.79h-4.63zm23.68-15.437c2.06 0 3.65 1.42 3.65 3.3 0 1.876-1.59 3.295-3.65 3.295-2.06 0-3.56-1.556-3.56-3.296 0-1.743 1.5-3.3 3.56-3.3zm-2.76 10.763h5.61v21.988h-5.62V22.118zm15.4 12.918c.37 3.252 2.9 5.223 6.03 5.223 2.81 0 4.63-1.29 6.04-2.98l4.02 2.98c-2.62 3.16-5.95 4.39-9.5 4.39-6.79 0-12.22-4.63-12.22-11.55 0-6.92 5.43-11.54 12.21-11.54 6.27 0 10.53 4.3 10.53 11.95v1.51H192.7zm11.51-4.12c-.05-3.207-2.2-5.223-5.71-5.223-3.33 0-5.38 2.06-5.81 5.222h11.51zm9.69-8.798h5.61V25.6h.09c1.21-2.518 3.69-4.03 6.64-4.03.7 0 1.36.136 2.01.32v5.314c-.938-.228-1.827-.412-2.718-.412-5.29 0-6.04 4.352-6.04 5.544v11.77h-5.61V22.118zm29.02 6.094c-1.08-1.467-2.48-2.244-4.4-2.244-1.5 0-3.28.685-3.28 2.336 0 3.94 12.12.732 12.12 9.3 0 5.22-5.1 7.05-9.69 7.05-3.46 0-6.46-.87-8.75-3.387l3.74-3.436c1.45 1.56 2.94 2.71 5.33 2.71 1.64 0 3.74-.78 3.74-2.52 0-4.53-12.12-.96-12.12-9.34 0-4.9 4.49-7.1 9.03-7.1 2.99 0 6.17.92 8 3.35l-3.74 3.3zm11.51-4.63c-.22-.27-.65-.396-.98-.396-.38 0-.91.167-.91.615 0 1.09 2.81.39 2.81 2.48 0 1.33-1.095 1.97-2.35 1.97-.784 0-1.47-.22-2.05-.75l.957-1.02c.28.36.726.57 1.17.57.44 0 .93-.2.93-.62 0-1.09-2.854-.5-2.854-2.49 0-1.27 1.13-1.94 2.325-1.94.684 0 1.35.18 1.87.63l-.927.99zm6.96-1.458l-1.4 3.893h-.02vl-1.41-3.893h-2.04v5.964h1.35v-4.575h.014l1.54 4.575h1.023l1.6-4.575h.02v4.575h1.34v-5.964"/></g></svg>
-      </div><!--
-      --><div class="dib caps gray b" style="font-size: 12px; width: 50%; margin-top: 6px; text-align: right; height: 30px;">
+      <div
+        class="dib"
+        style="height: 30px; width: 50%;  vertical-align: top; margin-bottom: 7px;"
+      >
+        <svg
+          style="width: 125px;"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 264 54"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+        >
+          <defs><path id="a" d="M0 0h263.446v53.582H0z" /></defs>
+          <g fill="none" fill-rule="evenodd">
+            <mask id="b" fill="#fff"><use xlink:href="#a" /></mask>
+            <path
+              fill="#90B1A7"
+              d="M40.47 18.09c-5.426.706-19.473 3.16-24.804 12.736-1.646 3.13-.595 5.893-.47 6.107-3.292-5.034-6.96-13.228 8.09-21.726 5.06-2.857 11.097-4.482 14.735-5.095 2.01-.307 2.83-.122 3.39 1.84.57 1.963.75 2.63.94 3.44.18.755.58 2.378-1.88 2.7zm-6.016 8.25c-4.766 1.14-21.224 5.642-17 15.014-.98-1.257-3.45-5.964-1.182-10.028 2.466-4.415 7.026-7.304 11.737-9.144 1.36-.534 2.73-.977 4.06-1.35l.54-.137c1.42-.338 1.8-.202 2.27 1.192.42 1.248.61 1.858.75 2.402.13.54.55 1.63-1.19 2.05zm-10.06 8.796c-2.843 1.502-7.61 4.205-5.115 8.452-.93-1.018-1.98-2.784-1.91-5.156.04-1.47.65-2.775 1.84-4.03.91-.97 2.01-1.785 3.39-2.577.43-.22.96-.162 1.21.333.3.6.77 1.57.89 1.876.09.227.36.744-.33 1.102zM0 53.583h54.746V0H0v53.583z"
+              mask="url(#b)"
+            />
+            <path
+              fill="#90B1A7"
+              d="M76.45 26.792h-4.635V22.12h4.634v-3.115c0-6.094 1.4-10.078 8.37-10.078 1.21 0 2.38.093 3.55.32L88 13.92c-.794-.19-1.543-.32-2.34-.32-3.134 0-3.603 2.1-3.603 4.53v3.982h5.197v4.672H82.06V44.1h-5.61V26.79zm13.292-4.674h5.616V25.6h.094c1.216-2.518 3.697-4.03 6.646-4.03.7 0 1.356.136 2.013.32v5.314c-.93-.228-1.82-.412-2.71-.412-5.29 0-6.04 4.352-6.04 5.544v11.77h-5.61V22.118zm27.295-.548c6.787 0 12.216 4.627 12.216 11.543 0 6.918-5.43 11.542-12.216 11.542-6.785 0-12.215-4.624-12.215-11.542 0-6.916 5.43-11.543 12.215-11.543m0 18.138c4.12 0 6.6-3.16 6.6-6.595 0-3.437-2.48-6.596-6.6-6.596-4.118 0-6.598 3.16-6.598 6.596 0 3.435 2.48 6.595 6.59 6.595m16.29-17.59h5.33v3.527h.09c1.03-2.197 3.13-4.076 6.88-4.076 6.03 0 8.19 4.16 8.19 8.65V44.1h-5.61V32.97c0-2.426-.19-6.46-4.12-6.46-3.7 0-5.15 2.658-5.15 5.59v12h-5.62V22.12zm23.07 4.674V22.12h4.63v-6.367h5.61v6.366h6.18v4.67h-6.18v9.62c0 2.2.65 3.57 3.13 3.57.98 0 2.34-.18 3.04-.69v4.62c-1.17.55-3.14.73-4.45.73-5.94 0-7.348-2.61-7.348-7.79V26.79h-4.63zm23.68-15.437c2.06 0 3.65 1.42 3.65 3.3 0 1.876-1.59 3.295-3.65 3.295-2.06 0-3.56-1.556-3.56-3.296 0-1.743 1.5-3.3 3.56-3.3zm-2.76 10.763h5.61v21.988h-5.62V22.118zm15.4 12.918c.37 3.252 2.9 5.223 6.03 5.223 2.81 0 4.63-1.29 6.04-2.98l4.02 2.98c-2.62 3.16-5.95 4.39-9.5 4.39-6.79 0-12.22-4.63-12.22-11.55 0-6.92 5.43-11.54 12.21-11.54 6.27 0 10.53 4.3 10.53 11.95v1.51H192.7zm11.51-4.12c-.05-3.207-2.2-5.223-5.71-5.223-3.33 0-5.38 2.06-5.81 5.222h11.51zm9.69-8.798h5.61V25.6h.09c1.21-2.518 3.69-4.03 6.64-4.03.7 0 1.36.136 2.01.32v5.314c-.938-.228-1.827-.412-2.718-.412-5.29 0-6.04 4.352-6.04 5.544v11.77h-5.61V22.118zm29.02 6.094c-1.08-1.467-2.48-2.244-4.4-2.244-1.5 0-3.28.685-3.28 2.336 0 3.94 12.12.732 12.12 9.3 0 5.22-5.1 7.05-9.69 7.05-3.46 0-6.46-.87-8.75-3.387l3.74-3.436c1.45 1.56 2.94 2.71 5.33 2.71 1.64 0 3.74-.78 3.74-2.52 0-4.53-12.12-.96-12.12-9.34 0-4.9 4.49-7.1 9.03-7.1 2.99 0 6.17.92 8 3.35l-3.74 3.3zm11.51-4.63c-.22-.27-.65-.396-.98-.396-.38 0-.91.167-.91.615 0 1.09 2.81.39 2.81 2.48 0 1.33-1.095 1.97-2.35 1.97-.784 0-1.47-.22-2.05-.75l.957-1.02c.28.36.726.57 1.17.57.44 0 .93-.2.93-.62 0-1.09-2.854-.5-2.854-2.49 0-1.27 1.13-1.94 2.325-1.94.684 0 1.35.18 1.87.63l-.927.99zm6.96-1.458l-1.4 3.893h-.02vl-1.41-3.893h-2.04v5.964h1.35v-4.575h.014l1.54 4.575h1.023l1.6-4.575h.02v4.575h1.34v-5.964"
+            />
+          </g>
+        </svg>
+      </div>
+      <!--
+      -->
+      <div
+        class="dib caps gray b"
+        style="font-size: 12px; width: 50%; margin-top: 6px; text-align: right; height: 30px;"
+      >
         DONATION RECEIPT
       </div>
       <div class="dib w100 line-thin"></div>
     </div>
     <!-- "THANK YOU" HEADING -->
-    <div class="b dib" style="font-size: 28px; line-height: 1.25; margin-bottom: 20px; margin-top: 75px; height: 70px;">
-      Obi-wan Kenobi, <br/>thank you for your generous donation of <span class="pewter">$200.00</span>.
+    <div
+      class="b dib"
+      style="font-size: 28px; line-height: 1.25; margin-bottom: 20px; margin-top: 75px; height: 70px;"
+    >
+      Obi-wan Kenobi, <br />thank you for your generous donation of
+      <span class="pewter">$200.00</span>.
     </div>
     <!-- ROW ONE -->
     <ul class="list-reset grid dib w100" style="margin-bottom: 20px;">
       <li class="dib col-1-4">
         <div class="column-content">
           <div class="dib w100 line-thin"></div>
-          <div class="dib gray caps" style="margin-top: 10px; margin-bottom: 10px; font-size: 10px;">
+          <div
+            class="dib gray caps"
+            style="margin-top: 10px; margin-bottom: 10px; font-size: 10px;"
+          >
             DESIGNATION
           </div>
-          <span class="dib w100 b">Anakin Skywalker &amp; Padme Amidala (005146)</span>
+          <span class="dib w100 b"
+            >Anakin Skywalker &amp; Padme Amidala (005146)</span
+          >
         </div>
-      </li><!--
-      --><li class="dib col-1-4">
+      </li>
+      <!--
+      -->
+      <li class="dib col-1-4">
         <div class="column-content">
           <div class="dib w100 line-thin"></div>
-          <div class="dib gray caps" style="margin-top: 10px; margin-bottom: 10px; font-size: 10px;">
+          <div
+            class="dib gray caps"
+            style="margin-top: 10px; margin-bottom: 10px; font-size: 10px;"
+          >
             DATE OF DONATION
           </div>
           <span class="dib w100 b">03/03/2017</span>
         </div>
-      </li><!--
-      --><li class="dib col-1-4">
+      </li>
+      <!--
+      -->
+      <li class="dib col-1-4">
         <div class="column-content">
           <div class="dib w100 line-thin"></div>
-          <div class="dib gray caps" style="margin-top: 10px; margin-bottom: 10px; font-size: 10px;">
+          <div
+            class="dib gray caps"
+            style="margin-top: 10px; margin-bottom: 10px; font-size: 10px;"
+          >
             RECEIPT
           </div>
           <span class="dib w100 b">2820431</span>
         </div>
-      </li><!--
-      --><li class="dib col-1-4">
+      </li>
+      <!--
+      -->
+      <li class="dib col-1-4">
         <div class="column-content">
           <div class="dib w100 line-thin"></div>
-          <div class="dib gray caps" style="margin-top: 10px; margin-bottom: 10px; font-size: 10px;">
+          <div
+            class="dib gray caps"
+            style="margin-top: 10px; margin-bottom: 10px; font-size: 10px;"
+          >
             WORKER ID
           </div>
           <span class="dib w100 b">005146</span>
@@ -110,25 +195,38 @@
       <li class="dib col-1-4">
         <div class="column-content">
           <div class="dib w100 line-thin"></div>
-          <div class="dib gray caps" style="margin-top: 10px; margin-bottom: 10px; font-size: 10px;">
+          <div
+            class="dib gray caps"
+            style="margin-top: 10px; margin-bottom: 10px; font-size: 10px;"
+          >
             PRIMARY DONOR
           </div>
           <span class="dib w100 b">Obi-wan Kenobi</span>
         </div>
-      </li><!--
-      --><li class="dib col-1-4">
+      </li>
+      <!--
+      -->
+      <li class="dib col-1-4">
         <div class="column-content">
           <div class="dib w100 line-thin"></div>
-          <div class="dib gray caps" style="margin-top: 10px; margin-bottom: 10px; font-size: 10px;">
+          <div
+            class="dib gray caps"
+            style="margin-top: 10px; margin-bottom: 10px; font-size: 10px;"
+          >
             DONOR ID
           </div>
           <span class="dib w100 b">1042566</span>
         </div>
-      </li><!--
-      --><li class="dib col-1-4">
+      </li>
+      <!--
+      -->
+      <li class="dib col-1-4">
         <div class="column-content">
           <div class="dib w100 line-thin"></div>
-          <div class="dib gray caps" style="margin-top: 10px; margin-bottom: 10px; font-size: 10px;">
+          <div
+            class="dib gray caps"
+            style="margin-top: 10px; margin-bottom: 10px; font-size: 10px;"
+          >
             TOTAL YEAR-TO-DATE
           </div>
           <span class="dib w100 b">$2,590.74</span>
@@ -139,58 +237,153 @@
       </li>
     </ul>
     <!-- Add space -->
-    <div class="ad-space" style="height: 200px; background-image: url('https://www.frontiersusa.org/data/FileManager/thumbnails/Photos/Site%20Images%20and%20Graphics/Header/home_crop_1280x500_1392293760_1280x500.jpg'); background-size: cover;"></div>
+    <div
+      class="ad-space"
+      style="height: 200px; background-image: url('https://www.frontiersusa.org/data/FileManager/thumbnails/Photos/Site%20Images%20and%20Graphics/Header/home_crop_1280x500_1392293760_1280x500.jpg'); background-size: cover;"
+    ></div>
     <!-- Tear off section -->
-    <div class="dib w100" style="position: absolute; bottom: 0; height: 3.5in; border-top: 2px dotted #EBEBEB;">
+    <div
+      class="dib w100"
+      style="position: absolute; bottom: 0; height: 3.5in; border-top: 2px dotted #EBEBEB;"
+    >
       <div style="margin-top: 40px;">
         <!-- Header -->
-        <div style="border-bottom: 2px solid #EBEBEB; padding-bottom: 5px; margin-bottom: 5px;">
-
-          <img style="width: 20px; vertical-align: top; height: auto; margin-top: 3px;" src="http://i68.tinypic.com/ng4t93.png">
+        <div
+          style="border-bottom: 2px solid #EBEBEB; padding-bottom: 5px; margin-bottom: 5px;"
+        >
+          <img
+            style="width: 20px; vertical-align: top; height: auto; margin-top: 3px;"
+            src="http://i68.tinypic.com/ng4t93.png"
+          />
           <div class="dib b" style="font-size: 18px; margin-bottom: 5px;">
             Donate by mail
           </div>
-          <div class="dib gray" style="font-size: 14px; float: right;">Make payable to Frontiers and send to P.O. Box 60730 Phoenix, AZ 85082</div>
+          <div class="dib gray" style="font-size: 14px; float: right;">
+            Make payable to Frontiers and send to P.O. Box 60730 Phoenix, AZ
+            85082
+          </div>
         </div>
         <!-- Table -->
         <div>
-          <div class="dib" style="width: 82%; border-bottom: 2px solid #EBEBEB; padding-bottom: 6px; margin-right: 3%; margin-bottom: 6px; font-size: 14px;">Donate to the ministry of Anakin Skywalker &amp; Padme Amidala (005146)</div><!--
-          --><div class="dib b" style="width: 15%; border-bottom: 2px solid #EBEBEB; padding-bottom: 5px; margin-bottom: 5px;">$</div>
+          <div
+            class="dib"
+            style="width: 82%; border-bottom: 2px solid #EBEBEB; padding-bottom: 6px; margin-right: 3%; margin-bottom: 6px; font-size: 14px;"
+          >
+            Donate to the ministry of Anakin Skywalker &amp; Padme Amidala
+            (005146)
+          </div>
+          <!--
+          -->
+          <div
+            class="dib b"
+            style="width: 15%; border-bottom: 2px solid #EBEBEB; padding-bottom: 5px; margin-bottom: 5px;"
+          >
+            $
+          </div>
         </div>
         <div>
-          <div class="dib" style="width: 82%; border-bottom: 2px solid #EBEBEB; padding-bottom: 6px; margin-right: 3%; margin-bottom: 6px; font-size: 14px;">Donate to the Mission Fund (0001)</div><!--
-          --><div class="dib b" style="width: 15%; border-bottom: 2px solid #EBEBEB; padding-bottom: 5px; margin-bottom: 5px;">$</div>
+          <div
+            class="dib"
+            style="width: 82%; border-bottom: 2px solid #EBEBEB; padding-bottom: 6px; margin-right: 3%; margin-bottom: 6px; font-size: 14px;"
+          >
+            Donate to the Mission Fund (0001)
+          </div>
+          <!--
+          -->
+          <div
+            class="dib b"
+            style="width: 15%; border-bottom: 2px solid #EBEBEB; padding-bottom: 5px; margin-bottom: 5px;"
+          >
+            $
+          </div>
         </div>
         <div>
-          <div class="dib" style="width: 64%; border-bottom: 2px solid #EBEBEB; padding-bottom: 6px; margin-right: 3%; margin-bottom: 6px; font-size: 14px;">Donate to another desgination (write code or name)</div><!--
-          --><div class="dib b" style="width: 15%; border-bottom: 2px solid #EBEBEB; padding-bottom: 5px; margin-right: 3%; margin-bottom: 5px;">#</div><!--
-          --><div class="dib b" style="width: 15%; border-bottom: 2px solid #EBEBEB; padding-bottom: 5px; margin-bottom: 5px;">$</div>
+          <div
+            class="dib"
+            style="width: 64%; border-bottom: 2px solid #EBEBEB; padding-bottom: 6px; margin-right: 3%; margin-bottom: 6px; font-size: 14px;"
+          >
+            Donate to another desgination (write code or name)
+          </div>
+          <!--
+          -->
+          <div
+            class="dib b"
+            style="width: 15%; border-bottom: 2px solid #EBEBEB; padding-bottom: 5px; margin-right: 3%; margin-bottom: 5px;"
+          >
+            #
+          </div>
+          <!--
+          -->
+          <div
+            class="dib b"
+            style="width: 15%; border-bottom: 2px solid #EBEBEB; padding-bottom: 5px; margin-bottom: 5px;"
+          >
+            $
+          </div>
         </div>
         <!-- Results -->
         <div style="margin-top: 10px;">
-          <div class="dib gray" style="width: 64%; margin-right: 3%; font-size: 10px; line-height: 1.30">As required by law, gifts are solicited with the understanding that FRONTIERS has complete discretion and control over the use of all donated funds. All gifts are tax-deductible and no goods or services were provided to the donor unless otherwise stated.</div><!--
-          --><div class="dib b pewter" style="width: 15%; padding-bottom: 5px; margin-right: 3%; text-align: right;">Total</div><!--
-          --><div class="dib b pewter" style="width: 15%; border-bottom: 3px solid #EBEBEB; padding-bottom: 5px; margin-bottom: 5px;">$</div>
+          <div
+            class="dib gray"
+            style="width: 64%; margin-right: 3%; font-size: 10px; line-height: 1.30"
+          >
+            As required by law, gifts are solicited with the understanding that
+            FRONTIERS has complete discretion and control over the use of all
+            donated funds. All gifts are tax-deductible and no goods or services
+            were provided to the donor unless otherwise stated.
+          </div>
+          <!--
+          -->
+          <div
+            class="dib b pewter"
+            style="width: 15%; padding-bottom: 5px; margin-right: 3%; text-align: right;"
+          >
+            Total
+          </div>
+          <!--
+          -->
+          <div
+            class="dib b pewter"
+            style="width: 15%; border-bottom: 3px solid #EBEBEB; padding-bottom: 5px; margin-bottom: 5px;"
+          >
+            $
+          </div>
         </div>
       </div>
       <!-- Footer -->
-      <div class="w100" style="margin-top: 30px; position: absolute; bottom: 0;">
-        <div class="dib" style="vertical-align: top; width: 40%; margin-right: 3%">
+      <div
+        class="w100"
+        style="margin-top: 30px; position: absolute; bottom: 0;"
+      >
+        <div
+          class="dib"
+          style="vertical-align: top; width: 40%; margin-right: 3%"
+        >
           <div class="dib w100 line-thin"></div>
           BAR CODES GO HERE
-        </div><!--
-        --><div class="dib" style="width: 20%; margin-right: 3%;">
+        </div>
+        <!--
+        -->
+        <div class="dib" style="width: 20%; margin-right: 3%;">
           <div class="dib">
             <div class="dib w100 line-thin"></div>
-            <div class="dib gray caps" style="margin-top: 10px; margin-bottom: 10px; font-size: 10px;">
+            <div
+              class="dib gray caps"
+              style="margin-top: 10px; margin-bottom: 10px; font-size: 10px;"
+            >
               DONOR ID
             </div>
             <span class="dib w100 b">1042566</span>
           </div>
-        </div><!--
-        --><div class="dib" style="width: 34%;">
+        </div>
+        <!--
+        -->
+        <div class="dib" style="width: 34%;">
           <div class="dib w100 line-thin"></div>
-          <div class="dib gray caps" style="margin-top: 10px; margin-bottom: 10px; font-size: 10px;">
+          <div
+            class="dib gray caps"
+            style="margin-top: 10px; margin-bottom: 10px; font-size: 10px;"
+          >
             PRIMARY DONOR
           </div>
           <span class="dib w100 b">Obi-wan Kenobi</span>
@@ -203,5 +396,4 @@
   <li class="page page-back dev-outline">
     <!-- Empty Page -->
   </li>
-
 </ul>
