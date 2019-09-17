@@ -37,3 +37,7 @@ In all receipts (except for general-v1), there is a section that notates what wi
 ```
 
 The code outside of those comments are not included in the export and are for local presentation purposes only.
+
+## Design Files
+
+There are additional design files, if ever needed, located in in `/design-files`.
