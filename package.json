@@ -11,7 +11,7 @@
     "watch": "onchange './**/*.*' -- npm run reload"
   },
   "devDependencies": {
-    "browser-sync": "^2.26.7",
+    "browser-sync": "^2.27.10",
     "del-cli": "^3.0.0",
     "jshint": "^2.10.2",
     "minifier": "^0.8.1",
